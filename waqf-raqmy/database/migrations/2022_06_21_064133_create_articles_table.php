@@ -16,6 +16,19 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('title');
+            $table->text('body');
+
+            $table->boolean('isPublished')->default(0);
+
+            $table->unsignedInteger('likes')->default(0);
+            $table->unsignedInteger('shares')->default(0);
+            $table->unsignedInteger('views')->default(0);
+
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('quoted_id')->nullable();
+
         });
     }
 
