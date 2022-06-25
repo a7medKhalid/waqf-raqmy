@@ -33,5 +33,32 @@ class ArticleController extends Controller
         return $article;
     }
 
+    public function update($author,$id, $title, $body, $tagsNames){
+
+        $tagsNames ?: $tagsNames = [];
+
+
+        $article = $author->articles->find($id);
+
+        $article->title = $title;
+        $article->body = $body;
+
+        foreach ($tagsNames as $tagName){
+            $tag = Tag::whereName($tagName)->firstOrcreate(['name' => $tagName]);
+
+            $tag->uses =+ 1;
+
+            $tag->save();
+
+            $article->tags()->save($tag);
+        }
+
+
+
+        $article->save();
+
+        return $article;
+    }
+
 
 }
