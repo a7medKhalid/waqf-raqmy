@@ -33,9 +33,9 @@ class ArticleController extends Controller
         return $article;
     }
 
-    public function update($author,$id, $title, $body, $tagsNames){
+    public function update($author, $id, $title, $body, $newTagsNames){
 
-        $tagsNames ?: $tagsNames = [];
+        $newTagsNames ?: $newTagsNames = [];
 
 
         $article = $author->articles->find($id);
@@ -43,17 +43,30 @@ class ArticleController extends Controller
         $article->title = $title;
         $article->body = $body;
 
-        foreach ($tagsNames as $tagName){
-            $tag = Tag::whereName($tagName)->firstOrcreate(['name' => $tagName]);
+        $oldTags = $article->tags;
+        $currentTagsNames = $oldTags->pluck('name');
 
-            $tag->uses =+ 1;
+        //delete tags
+        foreach ($oldTags as $oldTag){
+            if (!in_array($oldTag->name, $newTagsNames->toArray())){
+                $article->tags()->detach($oldTag->id);
+            }
 
-            $tag->save();
-
-            $article->tags()->save($tag);
         }
 
+        //add new tags
+        foreach ($newTagsNames as $tagName){
+            $tag = Tag::whereName($tagName)->firstOrcreate(['name' => $tagName]);
 
+            if (!in_array($tagName, $currentTagsNames->toArray())){
+                $tag->uses = $tag->uses + 1;
+
+                $tag->save();
+
+                $article->tags()->save($tag);
+            }
+
+        }
 
         $article->save();
 

@@ -45,13 +45,24 @@ class CreateArticle extends Component
     }
 
     public function addTag(){
-        $this->unSave();
-        $this->tagsNames->push($this->tagNameInput);
+
+        $this->resetErrorBag('tagNameInput');
+        if(in_array($this->tagNameInput, $this->tagsNames->toArray())){
+           $this->addError('tagNameInput', 'لايمكن إضافة التصنيف مرتين');
+        }elseif (count($this->tagsNames) === 5){
+            $this->addError('tagNameInput', 'لايمكن إضافة أكثر من خمس تصنيفات');
+        }else{
+            $this->unSave();
+            $this->tagsNames->push($this->tagNameInput);
+        }
+
+
+
     }
 
-    public function deleteTag($tagName){
+    public function deleteTag($index){
         $this->unSave();
-        unset($this->tagsNames[$tagName]);
+        unset($this->tagsNames[$index]);
     }
 
     public function save(){

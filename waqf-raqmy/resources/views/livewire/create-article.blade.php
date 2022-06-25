@@ -54,14 +54,19 @@
 
                         <input wire:model="tagNameInput" class="border border-1 border-gray-400" id="tagInput" list="tags">
 
+                        @if($errors->has('tagNameInput'))
+
+                            <span class="text-red-500">{{ $errors->first('tagNameInput') }}</span>
+
+                        @endif
+
 
                     </div>
 
                     <div class="flex space-x-2 justify-end m-3">
                         @foreach($tagsNames as $tag)
 
-                            {{-- TODO wire:click="deleteTag({{$tag}})" is not working --}}
-                            <button type="button" class="hover:border-red-500 hover:shadow-lg inline-block px-6 py-2 border-2 border-gray-800 text-gray-800 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+                            <button wire:click="deleteTag({{$loop->index}})" type="button" class="hover:border-red-500 hover:shadow-lg inline-block px-6 py-2 border-2 border-gray-800 text-gray-800 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
                                 {{$tag}}</button>
 
                         @endforeach
