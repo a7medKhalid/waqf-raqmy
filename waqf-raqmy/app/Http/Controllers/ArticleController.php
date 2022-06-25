@@ -60,5 +60,11 @@ class ArticleController extends Controller
         return $article;
     }
 
+    public function delete($author, $article){
+        $articleModel = $author->articles->find($article->id);
+
+        $articleModel->delete();
+    }
+
 
 }
