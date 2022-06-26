@@ -3,3 +3,5 @@
 @tailwind utilities;
 
 *{font-family: 'Cairo', sans-serif;}
+
+*{direction: rtl}

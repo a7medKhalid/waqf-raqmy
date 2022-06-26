@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Articles;
 use App\Http\Livewire\CreateArticle;
+use App\Http\Livewire\HomePage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomePage::class);
 
 Route::middleware([
     'auth:sanctum',
