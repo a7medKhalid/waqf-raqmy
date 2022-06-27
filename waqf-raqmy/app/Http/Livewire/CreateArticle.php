@@ -42,6 +42,8 @@ class CreateArticle extends Component
         $this->article->isPublished = 1;
         $this->article->save();
 
+        $this->redirect('/articles/' . $this->article->id);
+
     }
 
     public function addTag(){

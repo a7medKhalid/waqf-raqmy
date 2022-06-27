@@ -78,42 +78,43 @@
 
             <div class="rtl container mx-auto pb-6 md:pb-12 text-right">
                 <div class="w-auto mx-4 lg:w-4/5 lg:mx-auto">
+                    @if($articles)
+                        @foreach($articles as $article)
+                            <section class="text-gray-700 body-font overflow-hidden">
 
-                    @foreach($articles as $article)
-                        <section class="text-gray-700 body-font overflow-hidden">
+                                <div class="w-full flex flex-col items-start">
+                                    <div>
+                                        @foreach($article->tags as $tag)
+                                            <button wire:click="viewCategory({{$tag->id}})" class="hover:border-gray-300 inline-block py-0.5 px-2 mr-1 rounded bg-white text-gray-700 border border-gray-600 text-xs font-semibold tracking-widest tag-beginners">{{$tag->name}}</button>
+                                        @endforeach
+                                    </div>
+                                    <h2 class="text-2xl title-font font-semibold text-gray-900 my-2"><a href="/articles/{{$article->id}}" class="inline-block hover:underline">{{$article->title}}</a></h2>
+                                    <p class="leading-relaxed mb-4 text-lg">{!! $article->body !!}</p>
+                                    <div class="flex flex-col flex-wrap pb-8 mb-8 border-b-2 border-gray-100 mt-auto w-full">
+                                        <a href="/articles/{{$article->id}}" class="text-gray-900 inline-flex items-center hover:underline text-lg">اقرأ المزيد
+                                            <svg class="rotate-180 w-4 h-4 ml-1" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M5 12h14"></path>
+                                                <path d="M12 5l7 7-7 7"></path>
+                                            </svg>
+                                        </a>
 
-                            <div class="w-full flex flex-col items-start">
-                                <div>
-                                    @foreach($article->tags as $tag)
-                                        <button wire:click="viewCategory({{$tag->id}})" class="hover:border-gray-300 inline-block py-0.5 px-2 mr-1 rounded bg-white text-gray-700 border border-gray-600 text-xs font-semibold tracking-widest tag-beginners">{{$tag->name}}</button>
-                                    @endforeach
-                                </div>
-                                <h2 class="text-2xl title-font font-semibold text-gray-900 my-2"><a href="/articles/{{$article->id}}" class="inline-block hover:underline">{{$article->title}}</a></h2>
-                                <p class="leading-relaxed mb-4 text-lg">{!! $article->body !!}</p>
-                                <div class="flex flex-col flex-wrap pb-8 mb-8 border-b-2 border-gray-100 mt-auto w-full">
-                                    <a href="/articles/{{$article->id}}" class="text-gray-900 inline-flex items-center hover:underline text-lg">اقرأ المزيد
-                                        <svg class="rotate-180 w-4 h-4 ml-1" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M5 12h14"></path>
-                                            <path d="M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
+                                        <div class="flex">
+                                            <div class="mt-4 flex">
+                                                <p class="ml-2">{{$article->likes}}</p>
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
+                                            </div>
 
-                                    <div class="flex">
-                                        <div class="mt-4 flex">
-                                            <p class="ml-2">{{$article->likes}}</p>
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
+                                            <div class="mt-4 mr-2 flex">
+                                                <p class="ml-2">{{$article->views}}</p>
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>                                        </div>
+                                            </div>
                                         </div>
 
-                                        <div class="mt-4 mr-2 flex">
-                                            <p class="ml-2">{{$article->views}}</p>
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>                                        </div>
-                                        </div>
                                     </div>
 
-                                </div>
-
-                        </section>
-                    @endforeach
+                            </section>
+                        @endforeach
+                    @endif
 
                 </div>
             </div>

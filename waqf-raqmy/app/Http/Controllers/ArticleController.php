@@ -79,5 +79,17 @@ class ArticleController extends Controller
         $articleModel->delete();
     }
 
+    public function read($id = null){
+        if ($id){
+            $response = Article::whereId($id)->where('IsPublished', 1)->first();
+            $response->views = $response->views + 1;
+            $response->save();
+        }else{
+            $response = Article::where('IsPublished', 1)->get();
+        }
+
+        return $response;
+    }
+
 
 }

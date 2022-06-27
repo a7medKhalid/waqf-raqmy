@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\ArticleController;
 use App\Models\Article;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class HomePage extends Component
@@ -45,7 +47,10 @@ class HomePage extends Component
 
 
     public function mount(){
-        $this->articles = Article::all();
+
+        $article_controller = new ArticleController;
+
+        $this->articles = $article_controller->read();
         $this->tags = Tag::all();
     }
 

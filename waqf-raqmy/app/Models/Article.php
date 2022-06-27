@@ -11,12 +11,12 @@ class Article extends Model
 
     protected $guarded = [];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function author(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function quoted(){
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Article::class, 'article_id');
     }
 
     public function tags(){

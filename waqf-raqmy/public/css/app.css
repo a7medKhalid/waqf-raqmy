@@ -1103,6 +1103,9 @@ select {
 .m-14 {
   margin: 3.5rem;
 }
+.m-5 {
+  margin: 1.25rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1204,6 +1207,9 @@ select {
 }
 .mt-auto {
   margin-top: auto;
+}
+.mr-4 {
+  margin-right: 1rem;
 }
 .block {
   display: block;
@@ -2081,6 +2087,11 @@ select {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
+.hover\:text-blue-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2560,6 +2571,10 @@ select {
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .lg\:mt-16 {
+    margin-top: 4rem;
   }
 
   .lg\:inline-flex {
