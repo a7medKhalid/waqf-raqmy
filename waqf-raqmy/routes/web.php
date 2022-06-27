@@ -32,3 +32,4 @@ Route::middleware([
 Route::get('/articles/edit/{id}', CreateArticle::class)->name('CreateArticle')->middleware('auth');
 Route::get('/articles', Articles::class)->name('Articles')->middleware('auth');
 
+

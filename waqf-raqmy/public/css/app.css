@@ -1993,7 +1993,9 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
-*{font-family: 'Cairo', sans-serif;direction: rtl;}
+*{font-family: 'Cairo', sans-serif;}
+
+.rtl{direction: rtl}
 
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
