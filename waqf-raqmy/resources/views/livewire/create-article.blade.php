@@ -28,7 +28,7 @@
                     @endif
 
                     <div class="flex justify-center">
-                        <input wire:change="unSave" class="text-center text-2xl" value="العنوان" />
+                        <input wire:change="unSave" wire:model="title" class="text-center text-2xl" value="العنوان" />
                     </div>
                 </div>
 

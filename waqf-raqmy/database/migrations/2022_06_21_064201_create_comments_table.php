@@ -17,6 +17,15 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
+            $table->string('name')->nullable();
+            $table->string('body');
+
+            $table->integer('likes')->default(0);
+
+            $table->foreignId('user_id')->nullable();
+
+            $table->enum('commented_type', ['article', 'comment'])->nullable();
+            $table->foreignId('commented_id')->nullable();
 
         });
     }
