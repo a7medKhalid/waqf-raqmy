@@ -19,8 +19,40 @@
                     هنا يحيث نثري مفهوم الوقف الرقمي بتعريفات ومقترحات وأفكار لتطويره يمكن للجمبع أن يشارك ليكتب تصوره عن الوقف الرقمي ومايميزه
                 </p>
 
+                @guest
+
+                    <div class="relative flex lg:inline-flex items-center rounded-xl">
+                        <a href="{{ route('register') }}" class="text-black font-bold py-2 px-4 rounded-full">
+                            أنشئ حساب
+                        </a>
+
+                        <a href="{{ route('login') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                            دخول
+                        </a>
+
+                    </div>
+                @endguest
+
+                @auth
+                    <div class="relative flex lg:inline-flex items-center rounded-xl">
+                        <a href="{{ route('articles.index') }}" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                            عرض مقالاتي
+                        </a>
+                    </div>
+
+                @endauth
+
+
+
+
+
+
                 <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
-                    <!--  Category -->
+
+
+
+
+
                     <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
                         <select wire:model="tag" class="border-gray-200 rounded-lg  flex-1 appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold">
                             <option value="category" disabled selected>التصنيفات
@@ -30,6 +62,7 @@
                                 <option value="{{$tag->id}}">{{$tag->name}}</option>
                             @endforeach
                         </select>
+
 
                         <svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22"
                              height="22" viewBox="0 0 22 22">
@@ -89,7 +122,8 @@
                                         @endforeach
                                     </div>
                                     <h2 class="text-2xl title-font font-semibold text-gray-900 my-2"><a href="/articles/{{$article->id}}" class="inline-block hover:underline">{{$article->title}}</a></h2>
-                                    <p class="leading-relaxed mb-4 text-lg">{!! $article->body !!}</p>
+                                    <p class="leading-relaxed mb-4 text-lg"> {!! Str::limit($article->body,450) !!}
+                                    </p>
                                     <div class="flex flex-col flex-wrap pb-8 mb-8 border-b-2 border-gray-100 mt-auto w-full">
                                         <a href="/articles/{{$article->id}}" class="text-gray-900 inline-flex items-center hover:underline text-lg">اقرأ المزيد
                                             <svg class="rotate-180 w-4 h-4 ml-1" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">

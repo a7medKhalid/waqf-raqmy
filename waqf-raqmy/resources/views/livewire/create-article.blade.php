@@ -2,9 +2,20 @@
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
-            تحرير المقال
-        </h2>
+
+        <div class="rtl grid grid-cols-3">
+
+
+            <div class="relative flex lg:inline-flex items-center rounded-xl">
+                <a href="{{ route('articles.index') }}" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                    عرض مقالاتي
+                </a>
+            </div>
+
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+                تحرير المقال
+            </h2>
+        </div>
     </x-slot>
 
     <div class="py-12">

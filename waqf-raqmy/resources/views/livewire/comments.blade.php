@@ -1,11 +1,11 @@
 <div>
 
-    <div class="py-12">
+    <div class="">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="bg-white overflow-hidden  border border-gray-100">
 
                 <section class="rtl m-5 text-gray-700 body-font overflow-hidden mt-4 lg:mt-16">
-                    <a class="flex" wire:click="back">
+                    <a class="flex hover:text-blue-500 hover:underline transition duration-300 " wire:click="back" href="#" onClick="history.go(-1)">
                         <svg class="h-4 ml-1" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14"></path>
                             <path d="M12 5l7 7-7 7"></path>
@@ -38,7 +38,7 @@
                         @else
                             <h2 class="text-2xl title-font font-semibold text-gray-900 my-2"><a href="" class="inline-block hover:underline">{{$comment->author->name}}</a></h2>
                         @endif
-                        <p class="leading-relaxed mb-4 text-lg">{{$comment->body}}}</p>
+                        <p class="leading-relaxed mb-4 text-lg">{{$comment->body}}</p>
                             <div class="flex">
                                 <div class=" mr-2 flex">
                                     <p class="ml-2">{{$comment->comments->count()}}</p>
@@ -57,39 +57,34 @@
         </div>
     </div>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="rtl p-2 bg-white shadow-xl sm:rounded-lg">
 
-                <div class="mr-4">
+
+    <div class="">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white border border-gray-100 rounded-lg rounded-t-none">
+                <div class="pr-4 rtl border border-gray-100">
                     @if(\Illuminate\Support\Facades\Auth::user())
-                        <p>{{\Illuminate\Support\Facades\Auth::user()->name}}</p>
+{{--                        <p>{{\Illuminate\Support\Facades\Auth::user()->name}}</p>--}}
                     @else
                         <p> أدخل إسمك </p>
 
-                        <input wire:model="userName" class="border border-1 border-gray-400" id="tagInput" list="tags">
+
                     @endif
 
-                        <p> إضافة تعليق </p>
+                    <p class="my-4"> إضافة تعليق </p>
 
-                        <div class="mb-4">
-                            <input wire:model="commentBody" class="border border-1 border-gray-400" id="tagInput" list="tags">
-                            <button wire:click="comment()" class="mr-3 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">أضف</button>
+                    <div class="mb-4">
+                        <div >
+                        <textarea wire:model="commentBody" class="border border-1 border-gray-400 block w-1/2 " rows="5"  id="tagInput" list="tags"></textarea>
+{{--                        <input wire:model="commentBody" class="border border-1 border-gray-400" id="tagInput" list="tags">--}}
+                        <button wire:click="comment()" class="mt-4 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">أضف</button>
+
                         </div>
+                    </div>
                 </div>
-
-            </div>
-        </div>
-    </div>
-
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-xl sm:rounded-lg">
-
                 @foreach( $comments as $comment)
                     <div class="rtl w-full flex flex-col items-start">
-                        <div class="m-4 border-b-2 border-gray-100 w-full">
+                        <div class="p-4 border-b-2 border-gray-100 w-full">
                             @if($comment->name)
                                 <h2 class="text-2xl title-font font-semibold text-gray-900 my-2"><a href="" class="inline-block hover:underline">{{$comment->name}}</a></h2>
                             @else

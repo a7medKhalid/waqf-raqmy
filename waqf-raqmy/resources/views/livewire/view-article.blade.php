@@ -2,13 +2,13 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
-            <section class="rtl m-5 text-gray-700 body-font overflow-hidden mt-4 lg:mt-16">
-                <a class="flex" href="/">
+            <section class="rtl m-5 text-gray-700  body-font overflow-hidden mt-4 lg:mt-16">
+                <a class="flex items-center hover:text-blue-500 hover:underline transition duration-300 mb-4" href="#" onClick="history.go(-1)">
                     <svg class="h-4 ml-1" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14"></path>
                         <path d="M12 5l7 7-7 7"></path>
                     </svg>
-                    <p class="ml-2 mb-4 text-xs ttext-blue-500 " >عودة الى المقالات </p>
+                    <p class="ml-2  text-xs  " >عودة الى المقالات </p>
 
                 </a>
                 <h1 class="text-4xl text-gray-900 font-semibold relative">{{$article->title}}</h1>

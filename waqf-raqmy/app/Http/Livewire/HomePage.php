@@ -45,7 +45,6 @@ class HomePage extends Component
     }
 
 
-
     public function mount(){
 
         $article_controller = new ArticleController;

@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class)->name('Home');
 
-Route::get('/articles/edit/{id}', CreateArticle::class)->name('CreateArticle')->middleware('auth');
-Route::get('/articles', Articles::class)->name('Articles')->middleware('auth');
+Route::get('/articles/edit/{id}', CreateArticle::class)->name('articles.edit')->middleware('auth');
+Route::get('/articles', Articles::class)->name('articles.index')->middleware('auth');
 Route::get('/articles/{id}', ViewArticle::class)->name('ViewArticle');
 
 Route::get('/comments/{type}/{id}', Comments::class)->name('comments');

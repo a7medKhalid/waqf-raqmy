@@ -1,24 +1,26 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="rtl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('Home') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <h1 class="text-2xl">
+                            مقالات <span class="text-blue-500">الوقف الرقمي</span>
+                        </h1>
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('Home') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Home') }}
-                    </x-jet-nav-link>
-                </div>
+{{--                <!-- Navigation Links -->--}}
+{{--                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">--}}
+{{--                    <x-jet-nav-link href="{{ route('Home') }}" :active="request()->routeIs('dashboard')">--}}
+{{--                        {{ __('Home') }}--}}
+{{--                    </x-jet-nav-link>--}}
+{{--                </div>--}}
             </div>
 
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="hidden sm:flex sm:items-center sm:mr-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
@@ -71,7 +73,7 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
-                    <x-jet-dropdown align="right" width="48">
+                    <x-jet-dropdown align="left" width="48">
                         @if(Auth::user())
                             <x-slot name="trigger">
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -95,11 +97,11 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                إدارة الحساب
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                الملف الشخصي
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -116,7 +118,7 @@
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
+                                    تسجيل الخروج
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>

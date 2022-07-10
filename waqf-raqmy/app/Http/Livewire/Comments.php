@@ -34,6 +34,8 @@ class Comments extends Component
 
         $this->comments->push($newComment);
 
+        $this->commentBody = '';
+
     }
 
     public function viewComments($id){
