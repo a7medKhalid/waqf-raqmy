@@ -85,7 +85,7 @@ class ArticleController extends Controller
             $response->views = $response->views + 1;
             $response->save();
         }else{
-            $response = Article::where('IsPublished', 1)->get();
+            $response = Article::where('isPublished', 1)->get();
         }
 
         return $response;
