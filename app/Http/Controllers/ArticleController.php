@@ -81,7 +81,7 @@ class ArticleController extends Controller
 
     public function read($id = null){
         if ($id){
-            $response = Article::whereId($id)->where('IsPublished', 1)->first();
+            $response = Article::whereId($id)->where('isPublished', 1)->first();
             $response->views = $response->views + 1;
             $response->save();
         }else{
