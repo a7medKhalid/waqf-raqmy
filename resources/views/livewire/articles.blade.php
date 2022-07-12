@@ -15,7 +15,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="rtl bg-white shadow-xl sm:rounded-lg">
-                <div class="grid gap-4 grid-cols-3 p-2">
+                <div class="grid gap-4 p-2 grid-cols-1 md:grid-cols-3 p-3">
                     @foreach($articles as $article)
                         <div class="p-4 h-56 border border-gray-100 flex flex-col justify-between overflow-hidden">
                             <div>
