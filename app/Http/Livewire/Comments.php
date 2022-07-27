@@ -29,6 +29,7 @@ class Comments extends Component
         if(auth()->user()){
             $newComment = $comment_controller->create(auth()->user(), null ,$this->commentedType, $this->commentedId, $this->commentBody);
         }else{
+
             $newComment = $comment_controller->create(null, $this->userName ,$this->commentedType, $this->commentedId, $this->commentBody);
         }
 

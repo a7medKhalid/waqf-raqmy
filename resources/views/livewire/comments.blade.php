@@ -64,9 +64,10 @@
             <div class="bg-white border border-gray-100 rounded-lg rounded-t-none">
                 <div class="pr-4 rtl border border-gray-100">
                     @if(\Illuminate\Support\Facades\Auth::user())
-{{--                        <p>{{\Illuminate\Support\Facades\Auth::user()->name}}</p>--}}
+                        <p>{{\Illuminate\Support\Facades\Auth::user()->name}}</p>
                     @else
                         <p> أدخل إسمك </p>
+                        <input wire:model="userName" class="border border-1 border-gray-400" id="tagInput" list="tags">
 
 
                     @endif
@@ -88,7 +89,7 @@
                             @if($comment->name)
                                 <h2 class="text-2xl title-font font-semibold text-gray-900 my-2"><a href="" class="inline-block hover:underline">{{$comment->name}}</a></h2>
                             @else
-                                <h2 class="text-2xl title-font font-semibold text-gray-900 my-2"><a href="" class="inline-block hover:underline">{{$comment->author->name}}</a></h2>
+                                <h2 class="text-2xl title-font font-semibold text-gray-900 my-2"><a href="" class="inline-block hover:underline">{{$comment->author?->name}}</a></h2>
                             @endif
                             <p class="leading-relaxed mb-4 text-lg">{{$comment->body}}</p>
 

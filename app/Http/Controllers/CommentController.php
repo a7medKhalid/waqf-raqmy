@@ -29,9 +29,10 @@ class CommentController extends Controller
     }
 
     public function read($type, $id){
+
         if ($type === 'comment'){
             $comments = Comment::find($id)->comments;
-        }else{
+        }elseif ($type === 'article'){
             $comments = Article::find($id)->comments;
         }
 

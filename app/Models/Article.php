@@ -24,6 +24,6 @@ class Article extends Model
     }
 
     public function comments(){
-        return $this->hasMany(Comment::class, 'commented_id');
+        return $this->hasMany(Comment::class, 'commented_id')->where('commented_type', 'article');
     }
 }
